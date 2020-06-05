@@ -90,8 +90,9 @@ sys_uptime(void)
   return xticks;
 }
 
+// return the value of poiter that point to the target array
 int
 sys_info(void)
 {
-  
+
 }
