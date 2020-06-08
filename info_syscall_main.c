@@ -15,7 +15,7 @@ int main(void)
 	}
 	else{
 		//parent
-		int* parentptr = (int *)malloc(1000);
+		int* parentptr = (int *)malloc(2000);
 		printf(1,"parentpointer : %s\n", parentptr);
 	}
 	info();
