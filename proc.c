@@ -535,12 +535,16 @@ procdump(void)
 void info(void){
   struct proc_info result_RRProces[NPROC];
   struct proc *p= ptable.proc;
+  int running_count,runnable_count;
   acquire(&ptable.lock);
   for(int i=0; p < &ptable.proc[NPROC];i++, p++){
     if(p->state == RUNNABLE || p->state==RUNNING){
       result_RRProces[i].pid=p->pid;
       result_RRProces[i].memsize=p->sz;
-      
+      if (p->state==RUNNING)
+        running_count++;
+      if (p->state==RUNNABLE)
+        runnable_count++;
     }
     i++;
   }
@@ -557,7 +561,15 @@ void info(void){
       }
     }
   }
-  
+  //show result of sys_call
+  cprintf("proceses:\n");
+  cprintf("running proceses is:%i\n",running_count);
+  cprintf("runnable proceses is:%i\n",runnable_count);
+  for(int i=0;i<NPROC;i++){
+    if(result_RRProces[i].pid!=0 && result_RRProces[i].memsize!=0){
+      cprintf("pid: %d, size: %d \n",result_RRProces[i].pid, result_RRProces[i].memsize);
+    }
+  }
     
       
 
