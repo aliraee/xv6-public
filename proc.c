@@ -574,7 +574,7 @@ void info(void){
       cprintf("pid: %d, size: %d \n",result_RRProces[i].pid, result_RRProces[i].memsize);
     }
   }
-  cprintf("forked!");
+  cprintf("forked!\n");
     
       
 
