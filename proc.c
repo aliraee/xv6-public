@@ -536,7 +536,6 @@ void info(void){
   static struct proc_info result_RRProces[NPROC];
   struct proc *p= ptable.proc;
   int running_count=0,runnable_count=0;
-  acquire(&ptable.lock);
   for(int i=0; p < &ptable.proc[NPROC];i++, p++){
     if(p->state == RUNNABLE || p->state==RUNNING){
       result_RRProces[i].pid=p->pid;
