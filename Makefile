@@ -182,6 +182,7 @@ UPROGS=\
 	_wc\
 	_zombie\
 	_info_syscall_main\
+	
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
 
