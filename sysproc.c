@@ -91,8 +91,8 @@ sys_uptime(void)
 }
 
 // return the value of poiter that point to the target array
-int 
+void
 sys_info(void)
 {
-  return 1999;
+  return info();
 }
