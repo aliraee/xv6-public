@@ -533,18 +533,18 @@ procdump(void)
 }
 
 void info(void){
-  struct proc *p;
+  struct proc_info result_RRProces[NPROC];
+  struct proc *p= ptable.proc;
   acquire(&ptable.lock);
-  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+  for(int i=0; p < &ptable.proc[NPROC];i++, p++){
     if(p->state == RUNNABLE || p->state==RUNNING){
-      p_info->pid=p->pid;
-      p_info->memsize=p->sz;
-
-
+      result_RRProces[i].pid=p->pid;
+      result_RRProces[i].memsize=p->sz;
       
     }
-   
+    i++;
   }
+  
   
     
       
