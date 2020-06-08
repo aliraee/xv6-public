@@ -544,7 +544,19 @@ void info(void){
     }
     i++;
   }
-  
+  //sort the result array
+  struct proc_info tmp;
+  for (int i = 0; i < NPROC - 1; i++)
+  {
+    for (int j = 0; j < NPROC - i - 1; j++)
+    {
+      if(result_RRProces[j].memsize > result_RRProces[j+1].memsize){
+        tmp = result_RRProces[j];
+        result_RRProces[j] = result_RRProces[j+1];
+        result_RRProces[j+1] = tmp;
+      }
+    }
+  }
   
     
       
