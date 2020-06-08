@@ -569,7 +569,7 @@ void info(void){
   // cprintf("running proceses is:%d\n",running_count);
   // cprintf("runnable proceses is:%d\n",runnable_count);
   for(int i=0;i<NPROC;i++){
-    if(result_RRProces[i].pid>0 && result_RRProces[i].memsize>0){
+    if(result_RRProces[i].pid!=0 && result_RRProces[i].memsize!=0){
       cprintf("pid: %d, size: %d \n",result_RRProces[i].pid, result_RRProces[i].memsize);
     }
   }
