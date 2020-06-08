@@ -533,7 +533,7 @@ procdump(void)
 }
 
 void info(void){
-  struct proc_info result_RRProces[NPROC];
+  static struct proc_info result_RRProces[NPROC];
   struct proc *p= ptable.proc;
   int running_count=0,runnable_count=0;
   acquire(&ptable.lock);
