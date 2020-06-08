@@ -531,45 +531,15 @@ procdump(void)
     cprintf("\n");
   }
 }
-typedef struct {
-  struct proc_info *item;
-  int used;
-  int size;
-} Array;
 
-void initArray(Array *a, int initialSize) {
-  a->item = (struct proc_info *)kalloc(initialSize * sizeof(struct proc_info));
-  a->used = 0;
-  a->size = initialSize;
-}
-
-void insertArray(Array *a, struct proc_info element) {
-  // a->used is the number of used entries, because a->item[a->used++] updates a->used only *after* the item has been accessed.
-  // Therefore a->used can go up to a->size 
-  if (a->used == a->size) {
-    a->size += 1;
-    a->item = (struct proc_info *)realloc(a->item, a->size * sizeof(struct proc_info));
-  }
-  a->item[a->used++] = element;
-}
-
-void freeArray(Array *a) {
-  kfree(a->item);
-  a->item = NULL;
-  a->used = a->size = 0;
-}
 int info(void){
   struct proc *p;
   acquire(&ptable.lock);
-  Array result;
-  initArray(&result,10);
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
     if(p->state == RUNNABLE || p->state==RUNNING){
-      struct proc_info *p_info=(struct proc_info*) kalloc(sizeof(struct proc_info));
       p_info->pid=p->pid;
       p_info->memsize=p->sz;
 
-      insertArray(&result,*p_info);
 
       
     }
