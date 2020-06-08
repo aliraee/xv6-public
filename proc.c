@@ -532,7 +532,7 @@ procdump(void)
   }
 }
 
-int info(void){
+void info(void){
   struct proc *p;
   acquire(&ptable.lock);
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
@@ -545,7 +545,7 @@ int info(void){
     }
    
   }
-  return 0;
+  
     
       
 
