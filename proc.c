@@ -541,10 +541,14 @@ void info(void){
     if(p->state == RUNNABLE || p->state==RUNNING){
       result_RRProces[i].pid=p->pid;
       result_RRProces[i].memsize=p->sz;
-      if (p->state==RUNNING)
+      if (p->state==RUNNING){
         running_count++;
-      if (p->state==RUNNABLE)
+      }
+        
+      if (p->state==RUNNABLE){
         runnable_count++;
+      }
+        
     }
     i++;
   }
