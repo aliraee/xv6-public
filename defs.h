@@ -121,6 +121,7 @@ int             wait(void);
 void            wakeup(void*);
 void            yield(void);
 void            info(void);
+int             waitx(int *,int *);
 int             process_status(void);
 int             set_priority(int val);
 
