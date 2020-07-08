@@ -184,6 +184,7 @@ UPROGS=\
 	_infoSyscall\
 	_waitxSyscall\
 	_process_status\
+	_set_priority\
 	
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -256,6 +257,7 @@ EXTRA=\
 	infoSyscall.c\
 	waitxSyscall.c\
 	process_status.c\
+	set_priority.c\
 	printf.c umalloc.c\
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
