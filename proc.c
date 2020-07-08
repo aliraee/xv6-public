@@ -115,6 +115,7 @@ found:
   p->iotime=0;
   p->rtime=0;
   p->etime=0;
+  p->priority=60; //set default priority
   return p;
 }
 
