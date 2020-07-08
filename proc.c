@@ -652,3 +652,25 @@ process_status(void)
   release(&ptable.lock);
   return 0;
 }
+int 
+set_priority(int val){
+  if (val < 0 || val > 100){
+    return -1;
+  }
+  struct proc *p;
+  int old_priority = -1;
+  acquire(&ptable.lock);
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+  {
+    if(p->state != RUNNING){
+      continue;
+    }
+    if (p->priority != 10){
+      old_priority = p->priority;
+      p->priority = val;
+      break;
+    }
+  }
+  release(&ptable.lock);
+  return old_priority;
+}

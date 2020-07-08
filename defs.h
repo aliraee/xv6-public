@@ -122,6 +122,8 @@ void            wakeup(void*);
 void            yield(void);
 void            info(void);
 int             process_status(void);
+int             set_priority(int val);
+
 
 // swtch.S
 void            swtch(struct context**, struct context*);
