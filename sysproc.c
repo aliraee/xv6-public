@@ -101,3 +101,12 @@ sys_process_status(void)
 {
   return process_status();
 }
+int 
+sys_set_priority(void)
+{
+  int val;
+  if (argint(0, &val) < 0){
+    return -1;
+  }
+  return set_priority(val);
+}
