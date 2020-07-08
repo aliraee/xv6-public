@@ -96,3 +96,8 @@ sys_info(void)
 {
   return info();
 }
+int
+sys_process_status(void)
+{
+  return process_status();
+}
