@@ -627,3 +627,28 @@ waitx(int *wtime ,int *rtime){
   }
 }
  
+int
+process_status(void)
+{
+  struct proc *p;
+  acquire(&ptable.lock);
+  cprintf("name \t\t pid \t\t state \t\t priority\n");
+  for (p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if (p->state == SLEEPING){
+      cprintf("%s \t\t %d \t\t SLEEPING \t\t %d\n", p->name, p->pid, p->priority);
+    }
+    
+    else if (p->state == RUNNABLE){
+      cprintf("%s \t\t %d \t\t RUNNABLE \t\t %d\n", p->name, p->pid, p->priority);
+    }
+    else if (p->state == RUNNING){
+      cprintf("%s \t\t %d \t\t RUNNING \t\t %d\n", p->name, p->pid, p->priority);
+    }
+    else if (p->state == EMBRYO){
+      cprintf("%s \t\t %d \t\t EMBRYO \t\t %d\n", p->name, p->pid, p->priority);
+    }
+    
+  }
+  release(&ptable.lock);
+  return 0;
+}
