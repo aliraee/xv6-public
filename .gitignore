@@ -16,3 +16,4 @@ mkfs
 .gdbinit
 /fmt
 xv6.pdf
+.vscode/
